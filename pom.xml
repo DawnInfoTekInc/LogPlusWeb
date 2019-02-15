@@ -1,0 +1,212 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+	<parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>9</version>
+    </parent>
+    
+  <groupId>com.dawninfotek</groupId>
+  <artifactId>logplus-web</artifactId>
+  <version>1.8.0-SNAPSHOT</version>
+
+  <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+          	<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+  </distributionManagement>
+
+  <name>$(project.groupId):$(project.artifactId)</name>
+  <description>LogPlusWeb is an component to extend LogPlus framework, 
+  	The goal of LogPlusWeb is to support web filter and listener.</description>
+  <url>https://www.dawninfotek.com</url>
+  
+  <licenses>
+  	<license>
+  		<name>GNU General Public License, version 3</name>
+  		<url>http://www.gnu.org/licenses/gpl.txt</url>
+  	</license>
+  </licenses>
+  
+  <developers>
+  	<developer>
+  		<name>John Li</name>
+  		<email>john.li@dawninfotek.com</email>
+  		<organization>DawnInfotek</organization>
+  		<organizationUrl>https://www.dawninfotek.com</organizationUrl>
+  	</developer>
+  	<developer>
+  		<name>Ryan Wang</name>
+  		<email>ryan.wang@dawninfotek.com</email>
+  		<organization>DawnInfotek</organization>
+  		<organizationUrl>https://www.dawninfotek.com</organizationUrl>
+  	</developer>
+  </developers>
+  
+    <scm>
+  	<connection>scm:git:git://github.com/DawnInfoTekInc/LogPlus.git</connection>
+  	<developerConnection>scm:git:ssh://github.com/DawnInfoTekInc/LogPlus.git</developerConnection>
+  	<url>https://github.com/DawnInfoTekInc/LogPlus</url>
+  	</scm>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.6</maven.compiler.source>
+    <maven.compiler.target>1.6</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+  <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+    	<groupId>com.dawninfotek</groupId>
+    	<artifactId>logplus-core</artifactId>
+    	<version>1.8.0</version>
+	</dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+  	<profiles>
+  	<profile>
+    	<id>java8-doclint-disabled</id>
+    	<activation>
+      	<jdk>[1.8,)</jdk>
+    	</activation>
+    	<properties>
+      	<javadoc.opts>-Xdoclint:none</javadoc.opts>
+    	</properties>
+  	</profile>
+	</profiles>
+	
+  <build>
+    <resources> 
+        <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.java</include>              
+                </includes>
+        </resource>
+        <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>                 
+                </includes>
+        </resource>
+    </resources>
+    <pluginManagement>
+      <plugins>
+		<plugin>
+        	<groupId>org.apache.maven.plugins</groupId>
+        	<artifactId>maven-javadoc-plugin</artifactId>
+        	<version>2.9</version>
+        	<executions>
+            	<execution>
+                <id>attach-javadocs</id>
+                <goals>
+                    <goal>jar</goal>
+                </goals>
+                <configuration>
+                    <additionalparam>${javadoc.opts}</additionalparam>
+                </configuration>
+            	</execution>
+        	</executions>
+    	</plugin>
+    	<plugin>
+        	<groupId>org.apache.maven.plugins</groupId>
+        	<artifactId>maven-site-plugin</artifactId>
+        	<version>3.3</version>
+        	<configuration>
+          	<reportPlugins>
+            	<plugin>
+              	<groupId>org.apache.maven.plugins</groupId>
+              	<artifactId>maven-javadoc-plugin</artifactId>
+              	<configuration>
+                <additionalparam>${javadoc.opts}</additionalparam>
+              	</configuration>
+            	</plugin>
+          	</reportPlugins>
+        	</configuration>
+      	</plugin>
+      	<plugin>
+    		<groupId>org.apache.maven.plugins</groupId>
+    		<artifactId>maven-release-plugin</artifactId>
+    		<configuration>
+        		<pushChanges>false</pushChanges>
+    		</configuration>
+		</plugin>
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <!--<version>3.0.0</version>-->
+        </plugin>
+        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+<!--           <version>3.2.5</version> -->
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.20.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+          <configuration>
+             <includes>
+                <include>**/*</include>
+             </includes>      
+          	<finalName>${artifactId}-${version}</finalName>
+          </configuration> 
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>2.4</version>
+          <configuration>          
+            <descriptors>
+              <descriptor>
+                <id>jar-with-dependencies</id>
+                <formats>
+                  <format>jar</format>
+                </formats>
+                <includeBaseDirectory>false</includeBaseDirectory>
+                <dependencySets>
+                  <dependencySet>
+                    <unpack>true</unpack>
+                    <scope>runtime</scope>
+                  </dependencySet>
+                </dependencySets>
+              </descriptor>
+            </descriptors>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
