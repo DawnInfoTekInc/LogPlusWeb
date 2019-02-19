@@ -51,9 +51,9 @@
   </developers>
   
     <scm>
-  	<connection>scm:git:git://github.com/DawnInfoTekInc/LogPlus.git</connection>
-  	<developerConnection>scm:git:ssh://github.com/DawnInfoTekInc/LogPlus.git</developerConnection>
-  	<url>https://github.com/DawnInfoTekInc/LogPlus</url>
+  	<connection>scm:git:git://github.com/DawnInfoTekInc/LogPlusWeb.git</connection>
+  	<developerConnection>scm:git:ssh://github.com/DawnInfoTekInc/LogPlusWeb.git</developerConnection>
+  	<url>https://github.com/DawnInfoTekInc/LogPlusWeb</url>
   	</scm>
 
   <properties>
