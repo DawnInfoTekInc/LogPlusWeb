@@ -1,3 +1,10 @@
+/**************************************************************************
+ * Licensed Material - Dawn InfoTek Inc.                                  *
+ * Copyright (c) Dawn InfoTek Inc. 1999, 2005, 2018 - All rights reserved.*
+ * (<http://www.dawninfotek.com>)                                         *
+ *                                                                        *
+ **************************************************************************/
+
 package com.dawninfotek.logplus.web;
 
 import javax.servlet.ServletContextEvent;
