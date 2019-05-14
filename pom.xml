@@ -10,7 +10,6 @@
   <groupId>com.dawninfotek</groupId>
   <artifactId>logplus-web</artifactId>
   <version>1.8.4</version>
-
   <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
