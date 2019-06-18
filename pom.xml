@@ -9,7 +9,7 @@
     
   <groupId>com.dawninfotek</groupId>
   <artifactId>logplus-web</artifactId>
- <!-- <version>1.8.4</version> -->
+  <version>1.8.4</version>
   <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
@@ -70,7 +70,7 @@
     <dependency>
     	<groupId>com.dawninfotek</groupId>
     	<artifactId>logplus-core</artifactId>
-    	<version>LATEST</version>
+    	<version>1.8.4</version>
 	</dependency>
     <dependency>
       <groupId>junit</groupId>
