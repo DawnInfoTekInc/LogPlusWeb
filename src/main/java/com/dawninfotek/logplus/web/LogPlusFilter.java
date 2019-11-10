@@ -18,6 +18,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.core.annotation.Order;
+
 import com.dawninfotek.logplus.util.LogPlusFieldsInjector;
 
 /**
@@ -27,7 +29,8 @@ import com.dawninfotek.logplus.util.LogPlusFieldsInjector;
  * @author Ryan Wang, John Li
  *
  */
-@WebFilter(filterName = "LogPlusFilter",urlPatterns = {"/*"}) 
+@WebFilter(filterName = "LogPlusFilter", urlPatterns = {"/*"}) 
+@Order(2)
 // default filter mapping, could be overridden by web.xml
 public class LogPlusFilter implements Filter {
 
